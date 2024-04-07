@@ -1,4 +1,4 @@
-export default class ComputedState {
+export default class Compute {
   constructor(value, dependencies = []) {
     this.value = value;
     this.dependencies = dependencies;

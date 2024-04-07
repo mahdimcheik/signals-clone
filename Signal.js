@@ -1,4 +1,4 @@
-export default class State {
+export default class Signal {
   constructor(value) {
     this.value = value;
     this.element = document.createElement("my-signal");
@@ -15,7 +15,6 @@ export default class State {
   setValue(newValue) {
     this.value = newValue;
     this.render();
-    // console.log("set value is called ");
     if (this.subscribers.size) {
       this.subscribers.forEach((subscriber) => subscriber.render());
     }

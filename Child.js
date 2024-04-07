@@ -1,11 +1,11 @@
-import ComputedState from "./ComputedState.js";
-import State from "./State.js";
+import Compute from "./Compute.js";
+import Signal from "./Signal.js";
+import { contextSignal } from "./Context.js";
 
 export default function Child() {
-  console.log("rendered ");
-  const myState = new State(1);
-  const computedState = new ComputedState(() => myState.value + 2, [myState]);
-  const computedState2 = new ComputedState(() => myState.value * 2, [myState]);
+  const myState = new Signal(1);
+  const computedState = new Compute(() => myState.value + 2, [myState]);
+  const computedState2 = new Compute(() => myState.value * 2, [myState]);
 
   const element = document.createElement("div");
   element.appendChild(myState.element);
@@ -25,13 +25,17 @@ export default function Child() {
   element.append(computedState.element);
   element.append(computedState2.element);
 
-  const content = `
-<div>
-Original state : ${myState.element.innerHTML}
-</div>
-`;
+  element.appendChild(btn);
 
-  const html = new DOMParser().parseFromString(content, "text/html").body;
-  element.appendChild(html);
+  const h1Context = document.createElement("h1");
+  h1Context.appendChild(contextSignal.element);
+
+  const btnContext = document.createElement("button");
+  btnContext.innerHTML = "Change Context Signal Value";
+  btnContext.addEventListener("click", () => {
+    contextSignal.setValue(contextSignal.value * 10);
+  });
+  element.append(btnContext, h1Context);
+
   return element;
 }
