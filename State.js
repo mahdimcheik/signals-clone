@@ -1,7 +1,7 @@
 export default class State {
   constructor(value) {
     this.value = value;
-    this.element = document.createElement("div");
+    this.element = document.createElement("my-signal");
     this.element.innerHTML = value;
     this.subscribers = new Set();
   }

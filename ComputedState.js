@@ -3,11 +3,11 @@ export default class ComputedState {
     this.value = value;
     this.dependencies = dependencies;
     this.element = document.createElement("my-signal");
-    this.updateValue();
+    this.setValue();
     this.render();
     if (this.dependencies.length) {
       this.dependencies.forEach((dependency) =>
-        dependency.subscribe(this.updateValue.bind(this))
+        dependency.subscribe(this.render.bind(this))
       );
     }
   }
@@ -16,7 +16,7 @@ export default class ComputedState {
     this.element.innerHTML = this.value();
   }
 
-  updateValue() {
+  setValue() {
     this.render();
   }
 }
