@@ -2,7 +2,7 @@
 
 ## Signal (State)
 
-Un signal est un composant généré par JavaScript. Les changements appliqués sur ce composant seront affichés dans le DOM sans le besoin d'actualiser la page , ni le composant parent. Ce composant est représenté par une classe qui contient deux propriétés :
+Un signal est un composant généré par JavaScript, un _State_ qui avertit ses abonnés de son changement. Les changements appliqués sur ce composant seront affichés dans le DOM sans le besoin d'actualiser la page , ni le composant parent. Ce composant est représenté par une classe qui contient deux propriétés :
 
 ### Propriétés
 

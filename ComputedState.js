@@ -7,7 +7,8 @@ export default class ComputedState {
     this.render();
     if (this.dependencies.length) {
       this.dependencies.forEach((dependency) =>
-        dependency.subscribe(this.render.bind(this))
+        // dependency.subscribe(this.render.bind(this))
+        dependency.subscribe(this)
       );
     }
   }

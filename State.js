@@ -17,7 +17,7 @@ export default class State {
     this.render();
     // console.log("set value is called ");
     if (this.subscribers.size) {
-      this.subscribers.forEach((subscriber) => subscriber());
+      this.subscribers.forEach((subscriber) => subscriber.render());
     }
   }
 }
