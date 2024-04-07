@@ -1,8 +1,8 @@
 import Compute from "./Compute.js";
 import Signal from "./Signal.js";
-import { contextSignal } from "./Context.js";
+import { contextSignal, importText } from "./Context.js";
 
-export default function Child() {
+export default async function Child() {
   const myState = new Signal(1);
   const computedState = new Compute(() => myState.value + 2, [myState]);
   const computedState2 = new Compute(() => myState.value * 2, [myState]);
