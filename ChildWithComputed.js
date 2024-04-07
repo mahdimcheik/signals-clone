@@ -1,7 +1,9 @@
+import ComputedState from "./ComputedState.js";
 import State from "./State.js";
 
 export default function Child() {
   const myState = new State("Random value");
+
   const element = document.createElement("span");
   function handleClick() {
     console.log("clicked");

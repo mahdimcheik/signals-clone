@@ -1,16 +1,15 @@
-// import ComputedState from "./ComputedState.js";
+import ComputedState from "./ComputedState.js";
 import State from "./State.js";
 
 export default function Child() {
-  const myState = new State("Random value");
-  // const computedState = new ComputedState("computed state");
+  console.log("rendered ");
+  const myState = new State(1);
+  const computedState = new ComputedState(() => myState.value + 2, [myState]);
 
   const element = document.createElement("div");
   element.appendChild(myState.element);
   function handleClick() {
-    console.log("clicked");
-    myState.setValue("New Value from Child");
-    console.log("my statem", myState.element);
+    myState.setValue(myState.value + 1);
   }
   element.innerHTML = "<h1>This is a child using state</h1>";
   element.append(myState.element);
@@ -20,7 +19,7 @@ export default function Child() {
   btn.onclick = handleClick;
   element.appendChild(btn);
 
-  //element.append(computedState.element);
+  element.append(computedState.element);
 
   return element;
 }
